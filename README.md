@@ -36,9 +36,7 @@ The code is designed to download the data directly using the Kaggle API and extr
 Otherwise, download the dataset from the official [Dogs vs. Cats Challenge](https://www.kaggle.com/c/dogs-vs-cats/data) page and extract train.zip to where the Jupyter notebook is located on your machine.
 
 ## How to use:
-The [`examples`](https://github.com/albumentations-team/autoalbument/tree/master/examples) directory contains example configs for different tasks and datasets:
-
-Hydra uses configuration files to retrieve parameters necessary to run. A template configuration (/configs/experiment/template.yaml) shows all available parameters to run different experiments. This enables you to easily create new experiments using different combinations of:
+The [`configs`](https://github.com/Covid-xRay-Classification/configs/experiment/) directory contains a template for creating different experiments using:
 
 1. Number of epochs
 2. Model
