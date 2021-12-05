@@ -1,0 +1,18 @@
+_target_: src.models.covid_model.CovidModel
+
+lr: 0.001
+weight_decay: 0.0005
+
+model: "Densenet121"
+pretrained: False
+num_classes: 2
+drop_rate: 0
+optimizer: "Adam"
+momentum: 0
+eps: 1e-08
+alpha: 0.99
+dampening: 0
+betas: [0.9, 0.999]
+centered: False
+nesterov: False
+amsgrad: False
