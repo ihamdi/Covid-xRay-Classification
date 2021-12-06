@@ -21,6 +21,7 @@ or [download](https://github.com/ihamdi/Covid-xRay-Classification/archive/refs/h
 ```
 conda create --name env-name python=3.6.13
 ```
+*Python 3.6.13 is needed since GDCM is not supported on versions above 3.6.
 
 3. Install [PyTorch](https://pytorch.org/get-started/locally/)
 
@@ -31,12 +32,12 @@ pip install -r requirements.txt
 
 5. Download Data
 
-The code is designed to download the data directly using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
+Run `python scripts/download_data.py` to download the data directly using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
 
 Otherwise, download the train folder from the official [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection/data) page and move the contents to the [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder inside the [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/) directory.
 
 ## How to use:
-#### Experiments
+### Experiments
 The [`experiment`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/experiment/) folder inside [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory contains a template for configuring an experiment. The easiest way is to make a copy of [`template.yaml`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/configs/experiment/template.yaml) and edit the parameters accordingly.
 
 To run the default experiment, run the following command
@@ -47,7 +48,7 @@ or
 ```
 python train.py experiment=template
 ```
-This will run the template which is using the following parameters:
+This will run an experiment based on the template using the following parameters:
 1. 20 epochs (unless early stopping is triggered)
 2. Torchxrayvision's "ALL" (pretrained Densenet121) model with no Dropout
 3. Adam optimizer with learning rate of 0.003 and AMSGrad enabled.
@@ -59,8 +60,8 @@ This will run the template which is using the following parameters:
 9. MIN/(MAX-MIN)x255 normalization
 10. No augmentations
 
-#### Hyperparameter Search with Optuna
-As part of the Hydra template, Optuna can be used to find the best hyperparameters within a defined range. A template configuration file has been created within [`hparams_search`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/hparams_search/) inside the [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory. The template hyperparameter search can be initiated using
+### Hyperparameter Search with Optuna
+As part of the Hydra template, Optuna can be used to find the best hyperparameters within a defined range. A template configuration file can be found within [`hparams_search`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/hparams_search/) folder inside the [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory. The template hyperparameter search can be initiated using
 ```
 python run.py -m hparams_search=template_optuna experiment=template
 ```
@@ -68,6 +69,11 @@ or
 ```
 python run.py -m hparams_search=template_optuna experiment=template hydra.sweeper.n_trials=30
 ```
+---
+### Background:
+
+This was based on my [Dogs vs Cats](https://github.com/ihamdi/Dogs-vs-Cats-Classification) code and was finally adapted to the Lightning Hydra Template to make it easier to use and track. No submission was made to the Kaggle competition and only the training data is used.
+
 ---
 
 ### Contact:
@@ -89,4 +95,7 @@ For any questions or feedback, please feel free to post comments or contact me a
 ### Referernces:
 
 [Densenet paper](https://arxiv.org/abs/1608.06993) by Gao Huang, Zhuang Liu, Laurens van der Maaten, Kilian Q. Weinberger.
-[Torchxravision's](https://github.com/mlmed/torchxrayvision) pretrained Densenet models for chest xrays.
+
+[Torchxravision's](https://github.com/mlmed/torchxrayvision) pretrained models for chest xrays.
+
+[Lightning Hydra Template](https://github.com/ashleve/lightning-hydra-template/) on Github.
