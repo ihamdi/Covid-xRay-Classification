@@ -1,8 +1,9 @@
 # Covid xRay Binary Classification 
 ### Using Densenet121 and SIIM-FISABIO-RSNA COVID-19 Detection Database Database
+<a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-v3.6.13-blue.svg?logo=python&style=for-the-badge" /></a>
 <a href="https://www.anaconda.org/"><img src="https://img.shields.io/badge/conda-v4.10.3-blue.svg?logo=conda&style=for-the-badge" /></a>
 <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-v1.10.0-red.svg?logo=PyTorch&style=for-the-badge" /></a>
-<a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-v3.6.13-blue.svg?logo=python&style=for-the-badge" /></a>
+<a href="https://www.pytorchlightning.ai"><img src="https://img.shields.io/badge/Lightning-v1.3.8-purple.svg?logo=PyTorch-Lightning&style=for-the-badge" /></a>
 
 Negative             |  Typical
 :-------------------------:|:-------------------------:
