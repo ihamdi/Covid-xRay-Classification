@@ -15,13 +15,13 @@ import git
 git.Git("/your/directory/to/clone").clone("git:https://github.com/ihamdi/Covid-xRay-Classification.git)
 ```
 
-or [download](https://github.com/ihamdi/Covid-xRay-Classification/archive/refs/heads/main.zip) and extract a copy of the files.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or [download](https://github.com/ihamdi/Covid-xRay-Classification/archive/refs/heads/main.zip) and extract a copy of the files.
 
 2. Create conda environment
 ```
 conda create --name env-name python=3.6.13
 ```
-*Python 3.6.13 is needed since GDCM is not supported on versions above 3.6.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *Python 3.6.13 is needed since GDCM is not supported on versions above 3.6.
 
 3. Install [PyTorch](https://pytorch.org/get-started/locally/)
 
@@ -32,9 +32,9 @@ pip install -r requirements.txt
 
 5. Download Data
 
-Run `python scripts/download_data.py` to download the data directly using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run `python scripts/download_data.py` to download the data directly using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
 
-Otherwise, download the train folder from the official [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection/data) page and move the contents to the [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder inside the [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/) directory.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise, download the train folder from the official [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection/data) page and move the contents to the [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder inside the [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/) directory.
 
 ## How to use:
 ### Experiments
