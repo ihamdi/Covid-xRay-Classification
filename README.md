@@ -21,7 +21,7 @@ git.Git("/your/directory/to/clone").clone("git:https://github.com/ihamdi/Covid-x
 ```
 conda create --name env-name python=3.6.13
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *Python 3.6.13 is needed since GDCM is not supported on versions above 3.6.
+&nbsp;&nbsp;&nbsp;&nbsp; _*Python 3.6.13 is needed since GDCM is not supported on versions above 3.6._
 
 3. Install [PyTorch](https://pytorch.org/get-started/locally/)
 
@@ -37,7 +37,7 @@ pip install -r requirements.txt
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise, download the train folder from the official [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection/data) page and move the contents to the [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder inside the [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/) directory.
 
 ## How to use:
-### Experiments
+### Experiments:
 The [`experiment`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/experiment/) folder inside [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory contains a template for configuring an experiment. The easiest way is to make a copy of [`template.yaml`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/configs/experiment/template.yaml) and edit the parameters accordingly.
 
 To run the default experiment, run the following command
@@ -60,7 +60,7 @@ This will run an experiment based on the template using the following parameters
 9. MIN/(MAX-MIN)x255 normalization
 10. No augmentations
 
-### Hyperparameter Search with Optuna
+### Hyperparameter Search with Optuna:
 As part of the Hydra template, Optuna can be used to find the best hyperparameters within a defined range. A template configuration file can be found within [`hparams_search`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/hparams_search/) folder inside the [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory. The template hyperparameter search can be initiated using
 ```
 python run.py -m hparams_search=template_optuna experiment=template
