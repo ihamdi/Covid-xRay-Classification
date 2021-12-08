@@ -108,10 +108,7 @@ class COVIDDataModule(LightningDataModule):
         train_dir = oset_fol+'/train'
         
         df = pd.read_csv(path)
-        df = df.rename(columns = {'Negative for Pneumonia': 'Negative', 'Typical Appearance': 'Typical', 
-                                'Indeterminate Appearance': 'Indeterminate', 'Atypical Appearance': 'Atypical'}, 
-                                inplace = False
-        )
+        df = df.rename(columns = {'Negative for Pneumonia': 'Negative', 'Typical Appearance': 'Typical', 'Indeterminate Appearance': 'Indeterminate', 'Atypical Appearance': 'Atypical'}, inplace = False)
 
         df.loc[df['Negative'] == 1, 'label'] = 0
         df.loc[df['Typical'] == 1, 'label'] = 1
@@ -126,10 +123,14 @@ class COVIDDataModule(LightningDataModule):
         if self.classes == 4:
             df = pd.concat([negs_df, typ_df, inter_df, atyp_df]).reset_index(drop=True)
         else:
+            if self.dataset_size != 0:
+                negs_df = negs_df.sample(int(self.dataset_size/2))
             poss_df=df.loc[df['Negative']==0]
             poss_df = poss_df.sample(len(negs_df))
             df = pd.concat([negs_df, poss_df]).reset_index(drop=True)
-        df = df.sample(int(self.dataset_size))
+        
+        if self.dataset_size != 0:
+                df = df.sample(int(self.dataset_size))
 
         removed=0
         for index, row in df.iterrows():

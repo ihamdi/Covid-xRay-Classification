@@ -19,7 +19,7 @@ class Covid(LightningDataModule):
         df, 
         classes = 2, 
         mode='train', 
-        normal=1, 
+        normal=0, 
         img_size = 128, 
         model = "Densenet121",
         transformations = {"scale": 0, "shear": 0, "translation":[0, 0], 
@@ -48,16 +48,10 @@ class Covid(LightningDataModule):
         dcom_path=self.df.iloc[idx].path
         dc_img = dicom.dcmread(dcom_path)
         img_array = dc_img.pixel_array
-        
-        if self.normal == 1: #histogram normalization
-            img_array = exposure.equalize_hist(img_array)
-        elif self.normal == 2: #CLAHE normalization
-            img_array = exposure.equalize_adapthist(img_array)
-        else:
-            img_array = (img_array-np.min(img_array))/(np.max(img_array)-np.min(img_array))*255
 
         img_array = self.preprocess(img_array)
         img = self.transformations(img_array)
+        
         label = int(self.df.iloc[idx].label)
         if self.classes==2 and label != 0:
             label = 1
@@ -65,24 +59,36 @@ class Covid(LightningDataModule):
         return img, label
 
     def preprocess(self, img_array):
-        if self.model in ["Densenet121", "Densenet161", "Densenet169", "Densenet201"]:
+        if self.model.lower() in ["densenet121", "densenet161", "densenet169", "densenet201"]:
             img_array = resize(img_array, (self.img_size, self.img_size), anti_aliasing=True)
             img_array = img_array*255 #PIL.Image.fromarray expects 0-255 integers
             img_array = np.repeat(img_array[:, :, np.newaxis], 3, axis=2) #Densenet expects 3-channel image
-            img_array = Image.fromarray(img_array.astype('uint8'))
-        elif self.model in ["RSNA", "NIH", "PadChest", "CheXpert", "MIMIC_NB", "MIMIC_CH", "ALL"]:
+        
+        else:
             img_array = img_array[None, :, :]
             transform = torchvision.transforms.Compose([xrv.datasets.XRayCenterCrop(),
                                                         XRayResizer(224, engine="cv2")])    #torchxrayvision models expect resized images 
             img_array = transform(img_array)
             img_array = np.transpose(img_array, (1, 2, 0)) #torchxrayvision models expect (pixels, pixels, label) instead of (label, pixels, pixels)
+                
+        if self.normal == 1: #histogram normalization
+            img_array = exposure.equalize_hist(img_array)
+        elif self.normal == 2: #CLAHE normalization
+            img_array = exposure.equalize_adapthist(img_array)
+        else:
+            img_array = (img_array-np.min(img_array))/(np.max(img_array)-np.min(img_array))*255
+        
+        if self.model.lower() in ["densenet121", "densenet161", "densenet169", "densenet201"]:
+            img_array = Image.fromarray(img_array.astype('uint8'))
+        else:
             img_array = img_array.astype('uint8')
+
         return img_array
         
     def transformations(self,img):
         scale=[1-self.scale,1+self.scale]
         translation=[0,self.translation]
-        if self.model in ["Densenet121", "Densenet161", "Densenet169", "Densenet201"]:
+        if self.model.lower() in ["densenet121", "densenet161", "densenet169", "densenet201"]:
             if self.mode == 'train':
                 if self.horizontal_flip == True and self.vertical_flip == True:
                     self.transformations = transforms.Compose([transforms.RandomHorizontalFlip(),
@@ -117,14 +123,9 @@ class Covid(LightningDataModule):
                                                             transforms.ToTensor()]
                                                             )
             else:
-                self.transformations = transforms.Compose([transforms.RandomAffine(translate = translation,
-                                                                                    degrees=self.rotation, 
-                                                                                    scale = scale, 
-                                                                                    shear=self.shear), 
-                                                            transforms.ToTensor()]
-                                                            )
+                self.transformations = transforms.Compose([transforms.ToTensor()])
 
-        elif self.model in ["ALL", "RSNA", "NIH", "PadChest", "CheXpert", "MIMIC_NB", "MIMIC_CH", "JFH"]:
+        else:
             if self.mode == 'train':
                 if self.horizontal_flip == True and self.vertical_flip == True:
                     self.transformations = transforms.Compose([transforms.ToPILImage(), 
@@ -164,10 +165,6 @@ class Covid(LightningDataModule):
                                                             )
             else:
                 self.transformations = transforms.Compose([transforms.ToPILImage(), 
-                                                            transforms.RandomAffine(translate = translation,
-                                                                                    degrees=self.rotation, 
-                                                                                    scale = scale, 
-                                                                                    shear=self.shear), 
                                                             transforms.ToTensor()]
                                                             )
         return self.transformations(img)
