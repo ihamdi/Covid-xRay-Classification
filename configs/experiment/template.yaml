@@ -8,8 +8,8 @@ defaults:
   - override /trainer: null
   - override /model: null
   - override /datamodule: null
-  - override /callbacks: null
-  - override /logger: null
+  - override /callbacks: wandb.yaml
+  - override /logger: wandb
 
 # we override default configurations with nulls to prevent them from loading at all
 # instead we define all modules and their paths directly in this config,
@@ -25,7 +25,7 @@ trainer:
   _target_: pytorch_lightning.Trainer
   gpus: 1
   min_epochs: 1
-  max_epochs: 20
+  max_epochs: 1000
   gradient_clip_val: 0.5
   accumulate_grad_batches: 2
   weights_summary: "full"
@@ -36,11 +36,11 @@ model:
   model: "ALL" #"Densenet121" "Densenet161" "Densenet169" "Densenet201"
                 #"RSNA" "NIH" "PadChest" "CheXpert" "MIMIC_NB" "MIMIC_CH" "ALL" 
   
-  # pretrained: True
-  num_classes: 2
+  pretrained: True
+  num_classes: 4
   drop_rate: 0
   optimizer: "Adam" #"RMSprop" "SGD"
-  lr: 3e-3
+  lr: 3e-4
   weight_decay: 0.0005
   momentum: 0               #RMSprop    #SGD
   eps: 1e-08        #Adam   #RMSprop
@@ -56,20 +56,20 @@ datamodule:
   model: ${model.model}
   data_dir: ${data_dir}
   csv_name: "train_study_level.csv"
-  batch_size: 32
-  num_workers: 10
+  batch_size: 156
+  num_workers: 20
   pin_memory: False
-  # classes: 2
-  dataset_size: 640
-  train_val_test_split: [60, 20, 20]
-  img_size: 128
+  classes: ${model.num_classes}
+  dataset_size: 0     #0 = all
+  train_val_test_split: [70, 20, 10]
+  img_size: 256   # DOESN'T AFFECT XRV MODELS
   normal: 0       #[0]-MIN/(MAX-MIN)*255, 1-Histogram, 2-CLAHE
   scale: 0
   shear: 0
   translation: 0
+  rotation: 0
   horizontal_flip: False
   vertical_flip: False
-  rotation: 0
 
 callbacks:
   model_checkpoint:
@@ -83,17 +83,17 @@ callbacks:
   early_stopping:
     _target_: pytorch_lightning.callbacks.EarlyStopping
     monitor: "val/acc"
-    patience: 5
+    patience: 10
     mode: "max"
 
 logger:
   wandb:
     _target_: pytorch_lightning.loggers.wandb.WandbLogger
-    project: "Covid xRay Classification"
+    project: "multi"
     notes:  
     name: 
     save_dir: "./"
     offline: False # set True to store all logs only locally
-    id:  # pass correct id to resume experiment!
+    id: # pass correct id to resume experiment!
     log_model: True
     job_type: "train"

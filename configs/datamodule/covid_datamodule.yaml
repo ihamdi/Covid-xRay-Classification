@@ -6,7 +6,7 @@ train_val_test_split: [60, 20, 20]
 num_workers: 0
 pin_memory: False
 
-csv_dir: "SIIM-FISABIO-RSNA COVID-19 Detection/train_study_level.csv"
+csv_name: "train_study_level.csv",
 classes: 2
 dataset_size: 500
 normal: 1
@@ -15,6 +15,6 @@ model: "Densenet121"
 scale: 0
 shear: 0 
 translation: 0
+rotation: 0
 horizontal_flip: False
 vertical_flip: False
-rotation: 0
