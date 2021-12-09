@@ -44,7 +44,7 @@ pip install -r requirements.txt
 ### Experiments:
 The [`experiment`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/experiment/) folder inside [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory contains a template for configuring an experiment. The easiest way is to make a copy of [`template.yaml`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/configs/experiment/template.yaml) and edit the parameters accordingly.
 
-If num_classes is set to 2, the data will be 50% negative labeled images and 50% of non-negative labeled images (randomly chosen from the other 3 labels). On the other hand, if num_classes is set to 4, then the data will be a random mix from all images. The program also rejects any patient folders with more than 1 xrays to avoid training on lateral xrays.
+If num_classes is set to 4, then the data will be a random mix from all labels. Otherwise, the code will default to binary classification and the data will be 50% negative labeled images and 50% of non-negative labeled images (randomly chosen from the other 3 labels). The program also rejects any patient folders with more than 1 xrays to avoid training on lateral xrays.
 
 To run the default experiment, run the following command
 ```
