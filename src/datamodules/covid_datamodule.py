@@ -117,11 +117,11 @@ class COVIDDataModule(LightningDataModule):
 
         negs_df=df.loc[df['label']==0]
         typ_df=df.loc[df['label']==1]
-        inter_df=df.loc[df['label']==2]
+        indet_df=df.loc[df['label']==2]
         atyp_df=df.loc[df['label']==3]
 
         if self.classes == 4:
-            df = pd.concat([negs_df, typ_df, inter_df, atyp_df]).reset_index(drop=True)
+            df = pd.concat([negs_df, typ_df, indet_df, atyp_df]).reset_index(drop=True)
         else:
             if self.dataset_size != 0:
                 negs_df = negs_df.sample(int(self.dataset_size/2))
