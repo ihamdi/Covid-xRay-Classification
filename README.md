@@ -24,24 +24,27 @@ conda create --name env-name python=3.6.13
 ```
 &nbsp;&nbsp;&nbsp;&nbsp; _*Python 3.6.13 is needed since GDCM is not supported on versions above 3.6._
 
-3. Install [PyTorch](https://pytorch.org/get-started/locally/)
+3. Install [PyTorch](https://pytorch.org/get-started/locally/) according to your machine. For example:
+```
+conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+```
 
-4. Install dependencies
+4. Install dependencies from [`requirements.txt`](https://github.com/ihamdi/Dogs-vs-Cats-Classification/blob/main/requirements.txt) file:
 ```
 pip install -r requirements.txt
 ```
 
 5. Download Data
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run `python scripts/download_data.py` to download the data directly using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run `python scripts/download_data.py` to download the data using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise, download the train folder from the official [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection/data) page and move the contents to the [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder inside the [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/) directory.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise, extract the contents of the "train" directory from the official [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection/data) page to the [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder inside the [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/) directory.
 
 ## How to use:
 ### Experiments:
 The [`experiment`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/experiment/) folder inside [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory contains a template for configuring an experiment. The easiest way is to make a copy of [`template.yaml`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/configs/experiment/template.yaml) and edit the parameters accordingly.
 
-If num_classes is set to 2, the data will be 50% negative labeled images and 50% of non-negative labeled images. On the other hand, if num_classes is set to 4, then the data will be a random mix from all images. The program also rejects any folders with more than 1 images to avoid training on lateral xrays.
+If num_classes is set to 2, the data will be 50% negative labeled images and 50% of non-negative labeled images (randomly chosen from the other 3 labels). On the other hand, if num_classes is set to 4, then the data will be a random mix from all images. The program also rejects any patient folders with more than 1 xrays to avoid training on lateral xrays.
 
 To run the default experiment, run the following command
 ```
