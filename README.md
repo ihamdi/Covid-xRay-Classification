@@ -78,7 +78,7 @@ python run.py -m hparams_search=template_optuna experiment=template hydra.sweepe
 ---
 ### Background:
 
-This was based on my [Dogs vs Cats](https://github.com/ihamdi/Dogs-vs-Cats-Classification) code and was finally adapted to the Lightning Hydra Template to make it easier to use and track. No submission was made to the Kaggle competition and only the training data is used.
+Initially, this code was based on my [Dogs vs Cats](https://github.com/ihamdi/Dogs-vs-Cats-Classification) code. I eventually adapted the [Lightning-Hydra-Template](https://github.com/ashleve/lightning-hydra-template) to make it easier to use and log. No submission was made to the Kaggle competition and only the training data is used.
 
 ---
 
