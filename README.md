@@ -10,19 +10,19 @@ Negative             |  Typical
 ![1e6f48393e17_03](https://user-images.githubusercontent.com/93069949/144041416-d3e5d620-a5b4-45ae-ac8f-331358622b00.png) | ![09cf9767a7bf](https://user-images.githubusercontent.com/93069949/144042579-0e26ae6c-d7c0-439a-b59a-497faf80bdd9.jpg)
 
 ## Installation
-1. Clone Github
+1. 2. Create conda environment
+```
+conda create --name env-name python=3.6.13 gitpython
+```
+&nbsp;&nbsp;&nbsp;&nbsp; _*Python 3.6.13 is needed since GDCM is not supported on versions above 3.6_
+
+2. Clone Github
 ```
 from git import Repo
 Repo.clone_from("https://github.com/ihamdi/Covid-xRay-Classification.git","/your/directory/")
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or [download](https://github.com/ihamdi/Covid-xRay-Classification/archive/refs/heads/main.zip) and extract a copy of the files.
-
-2. Create conda environment
-```
-conda create --name env-name python=3.6.13
-```
-&nbsp;&nbsp;&nbsp;&nbsp; _*Python 3.6.13 is needed since GDCM is not supported on versions above 3.6._
 
 3. Install [PyTorch](https://pytorch.org/get-started/locally/) according to your machine. For example:
 ```
@@ -66,7 +66,7 @@ This will run an experiment based on the template using the following configuati
 9. IMG-MIN/(MAX-MIN)x255 normalization
 10. No augmentations
 
-*Torchxrayvision models expect 224 so the code defaults to that automatically if one of them is chosen.
+_*Torchxrayvision models expect 224 so the code defaults to that automatically if one of them is chosen_
 
 ### Hyperparameter Search with Optuna:
 As part of the Hydra template, Optuna can be used to find the best hyperparameters within a defined range. A template configuration file can be found within [`hparams_search`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/hparams_search/) folder inside the [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory. The template hyperparameter search can be initiated using
