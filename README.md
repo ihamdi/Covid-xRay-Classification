@@ -16,7 +16,7 @@ conda create --name env-name python=3.6.13 gitpython
 ```
 &nbsp;&nbsp;&nbsp;&nbsp; _*Python 3.6.13 is needed since GDCM is not supported on versions above 3.6_
 
-2. Clone Github (run from command line)
+2. Clone Github
 ```
 git clone -v https://github.com/ihamdi/Covid-xRay-Classification.git /your/directory/
 ```
