@@ -130,8 +130,6 @@ For any questions or feedback, please feel free to post comments or contact me a
 
 ### Referernces:
 
-[Densenet paper](https://arxiv.org/abs/1608.06993) by Gao Huang, Zhuang Liu, Laurens van der Maaten, Kilian Q. Weinberger.
-
 [Torchxravision](https://github.com/mlmed/torchxrayvision)'s page on Github (used for Densenet121 models pretrained on xrays).
 
 [Pytorch Lightning](https://github.com/PyTorchLightning/pytorch-lightning)'s page on Github
@@ -139,6 +137,8 @@ For any questions or feedback, please feel free to post comments or contact me a
 [Lightning Hydra Template](https://github.com/ashleve/lightning-hydra-template/)'s page on Github.
 
 [Weights & Biases](https://wandb.ai/)'s website.
+
+[Densenet paper](https://arxiv.org/abs/1608.06993) by Gao Huang, Zhuang Liu, Laurens van der Maaten, Kilian Q. Weinberger.
 
 ---
 
