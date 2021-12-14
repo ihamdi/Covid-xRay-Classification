@@ -12,7 +12,7 @@ Negative             |  Typical
 ## Installation
 1. Create conda environment
 ```
-conda create --name env-name python=3.6.13 gitpython
+conda create --name env-name python=3.6.13
 ```
 &nbsp;&nbsp;&nbsp;&nbsp; _*Python 3.6.13 is needed since GDCM is not supported on versions above 3.6_
 
