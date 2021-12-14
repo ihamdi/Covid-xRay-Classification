@@ -1,5 +1,5 @@
 # Covid xRay Binary Classification 
-### Using Densenet121 and SIIM-FISABIO-RSNA COVID-19 Detection Database
+### Using Pytorch Lightning, Densenet121, and SIIM-FISABIO-RSNA COVID-19 Detection Database
 <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-v3.6.13-blue.svg?logo=python&style=for-the-badge" /></a>
 <a href="https://www.anaconda.org/"><img src="https://img.shields.io/badge/conda-v4.10.3-blue.svg?logo=conda&style=for-the-badge" /></a>
 <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-v1.10.0-red.svg?logo=PyTorch&style=for-the-badge" /></a>
@@ -128,16 +128,6 @@ For any questions or feedback, please feel free to post comments or contact me a
 
 ---
 
-### Using Kaggle's API:
-
-![image](https://user-images.githubusercontent.com/93069949/144188576-d457568e-7cd2-42f2-ba08-9c41143d674d.png)
-
-![image](https://user-images.githubusercontent.com/93069949/144188635-705e1e29-92ae-4aba-be66-0e1d2e1c29ca.png)
-
-![image](https://user-images.githubusercontent.com/93069949/144188696-f535f9c8-3ed8-4e1b-8f0d-179d7e5be2a2.png)
-
----
-
 ### Referernces:
 
 [Densenet paper](https://arxiv.org/abs/1608.06993) by Gao Huang, Zhuang Liu, Laurens van der Maaten, Kilian Q. Weinberger.
@@ -149,3 +139,17 @@ For any questions or feedback, please feel free to post comments or contact me a
 [Lightning Hydra Template](https://github.com/ashleve/lightning-hydra-template/)'s page on Github.
 
 [Weights & Biases](https://wandb.ai/)'s website.
+
+---
+
+### Using Kaggle's API:
+
+![image](https://user-images.githubusercontent.com/93069949/144188576-d457568e-7cd2-42f2-ba08-9c41143d674d.png)
+
+![image](https://user-images.githubusercontent.com/93069949/144188635-705e1e29-92ae-4aba-be66-0e1d2e1c29ca.png)
+
+![image](https://user-images.githubusercontent.com/93069949/144188696-f535f9c8-3ed8-4e1b-8f0d-179d7e5be2a2.png)
+
+### Using Weights & Biases (wandb):
+
+![Screenshot from 2021-1](https://user-images.githubusercontent.com/93069949/145940749-1ee81bbf-a77a-40c6-985c-880ad3a5c6c5.png)
