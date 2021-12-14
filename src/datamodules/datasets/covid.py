@@ -53,8 +53,6 @@ class Covid(LightningDataModule):
         img = self.transformations(img_array)
         
         label = int(self.df.iloc[idx].label)
-        if self.classes==2 and label != 0:
-            label = 1
             
         return img, label
 
