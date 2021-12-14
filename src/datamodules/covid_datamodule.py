@@ -112,13 +112,17 @@ class COVIDDataModule(LightningDataModule):
 
         df.loc[df['Negative'] == 1, 'label'] = 0
         df.loc[df['Typical'] == 1, 'label'] = 1
-        df.loc[df['Indeterminate'] == 1, 'label'] = 2
-        df.loc[df['Atypical'] == 1, 'label'] = 3
-
-        negs_df=df.loc[df['label']==0]
-        typ_df=df.loc[df['label']==1]
-        indet_df=df.loc[df['label']==2]
-        atyp_df=df.loc[df['label']==3]
+        if self.classes == 4:
+            df.loc[df['Indeterminate'] == 1, 'label'] = 2
+            df.loc[df['Atypical'] == 1, 'label'] = 3
+        else:
+            df.loc[df['Indeterminate'] == 1, 'label'] = 1
+            df.loc[df['Atypical'] == 1, 'label'] = 1
+            
+        negs_df=df.loc[df['Negative']==1]
+        typ_df=df.loc[df['Typical']==1]
+        indet_df=df.loc[df['Indeterminate']==1]
+        atyp_df=df.loc[df['Atypical']==1]
 
         if self.classes == 4:
             df = pd.concat([negs_df, typ_df, indet_df, atyp_df]).reset_index(drop=True)
