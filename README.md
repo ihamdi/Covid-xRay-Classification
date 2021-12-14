@@ -36,15 +36,17 @@ pip install -r requirements.txt
 
 5. Download Data
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run `python scripts/download_data.py` to download the data using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run [`download_data.py`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/scripts/download_data.py) to download the data using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise, extract the contents of the "train" directory from the official [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection/data) page to the [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder inside the [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/) directory.
 
 ## How to use:
+Using Pytorch Lightning with the Hydra-Lightning-Template enables us to have experiments with different configurations/hyperparameters on the same dataset or doing a sweep with Optuna:
+
 ### Experiments:
 The [`experiment`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/experiment/) folder inside [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory contains a template for configuring an experiment. The easiest way is to make a copy of [`template.yaml`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/configs/experiment/template.yaml) and edit the parameters accordingly.
 
-If num_classes is set to 4, then the data will be a random mix from all labels. Otherwise, the code will default to binary classification and the data will be an equal mix of negative and non-negative labeled images (randomly chosen from the other 3 classes). The program also rejects any data folders with more than 1 xray files to avoid training on lateral chest xrays.
+If num_classes is set to 4, then the data will be a random mix from all labels. Otherwise, the code will default to binary classification, and the data will be a balanced mix of negative and non-negative labeled images (randomly chosen from the other 3 classes). The program also rejects any data folders with more than 1 xray files to avoid training on lateral chest xrays.
 
 To run the default experiment, run the following command
 ```
@@ -84,7 +86,6 @@ When in binary classification mode, the code is able to produce a model with jus
 
 ![W B Chart 12_14_2021, 9_37_59 AM](https://user-images.githubusercontent.com/93069949/145939574-a89b312a-b3ee-42b5-9482-3313f188d22c.png)
 
-
 This was done using the "All" model from torchxrayvision, Adam optimizer, and the following hyperparameters:
 1. drop_rate (Dropout) = 0
 2. lr (Learning Rate) = 0.0003
@@ -102,7 +103,7 @@ This was done using the "All" model from torchxrayvision, Adam optimizer, and th
 14. num_workers = 20
 
 
-Although the code accepts setting num_classes=4, it is currently unable to achieve a validation accuracy higher than 60-62% regardless of hyperparameters:
+Although the code accepts setting num_classes=4, it is currently unable to achieve a validation accuracy higher than 60-62% regardless of hyperparameter tuning:
 
 ![W B Chart 12_14_2021, 9_36_37 AM](https://user-images.githubusercontent.com/93069949/145939394-ab623cd7-087d-4256-82d2-358bc6b16d30.png)
 
@@ -111,14 +112,13 @@ F1 Heatmap & Confusion Matrix below show that it is especially not doing well at
 ![media_images_confusion_matrix_winter-totem-6_423_3c808d26766df4b83257](https://user-images.githubusercontent.com/93069949/145939273-8b8bead8-e501-4061-b9c6-9347d0895efb.png)
 ![media_images_f1_p_r_heatmap_winter-totem-6_423_c6e8de7712ab2e94fcac](https://user-images.githubusercontent.com/93069949/145939274-8b1370d0-bded-4d09-b9d8-db7bdd458954.png)
 
-
-I am currently investigating whether it is possible to significantly improve the performance of the model. Dropout and Augmentations seem to have an adverse effect on the accuracy so I might need to proceed with a different architecture altogether. 
+I am currently investigating whether it is possible to achieve significantly improvement in the performance of the model. Dropout and Augmentations seem to have an adverse effect on the accuracy so I might need to switch to a different architecture altogether. 
 
 ---
 
 ### Background:
 
-Initially, this code was based on my [Dogs vs Cats](https://github.com/ihamdi/Dogs-vs-Cats-Classification) code. I eventually adapted the [Lightning-Hydra-Template](https://github.com/ashleve/lightning-hydra-template) to make it easier to use and log. No submission was made to the Kaggle competition and only the training data is used.
+Initially, this code was based on my [Dogs vs Cats](https://github.com/ihamdi/Dogs-vs-Cats-Classification) code. I eventually adopted the [Lightning-Hydra-Template](https://github.com/ashleve/lightning-hydra-template) to make it easier to use and log. No submission is made to the Kaggle competition and only the training data is used.
 
 ---
 
