@@ -82,7 +82,8 @@ python run.py -m hparams_search=template_optuna experiment=template hydra.sweepe
 ## Results
 When in binary classification mode, the code is able to produce a model with just over 80% accuracy on the validation data before it starts overfitting: 
 
-![Screenshot from 2021-12-14 09-14-42](https://user-images.githubusercontent.com/93069949/145937483-47c0715b-5056-4e5d-aed8-c45f1582cc4a.png)
+![W B Chart 12_14_2021, 9_37_59 AM](https://user-images.githubusercontent.com/93069949/145939574-a89b312a-b3ee-42b5-9482-3313f188d22c.png)
+
 
 This was done using the "All" model from torchxrayvision, Adam optimizer, and the following hyperparameters:
 1. drop_rate (Dropout) = 0
@@ -101,12 +102,17 @@ This was done using the "All" model from torchxrayvision, Adam optimizer, and th
 14. num_workers = 20
 
 
-XXXXXXXXXxx
-XXXXXXXXXXX
-XXXXXXXXXX
+Although the code accepts setting num_classes=4, it is currently unable to achieve a validation accuracy higher than 60-62% regardless of hyperparameters:
 
-![f1](https://user-images.githubusercontent.com/93069949/145938296-730f83a5-8c3b-427b-9038-acf0cf1016d4.png)
-![confusion matrix](https://user-images.githubusercontent.com/93069949/145938302-368baf76-d877-4c8a-98ce-ba3c30ffc5b7.png)
+![W B Chart 12_14_2021, 9_36_37 AM](https://user-images.githubusercontent.com/93069949/145939394-ab623cd7-087d-4256-82d2-358bc6b16d30.png)
+
+F1 Heatmap & Confusion Matrix below show that it is especially not doing well at classifying xrays with Atypical appearance (label 3): 
+
+![media_images_confusion_matrix_winter-totem-6_423_3c808d26766df4b83257](https://user-images.githubusercontent.com/93069949/145939273-8b8bead8-e501-4061-b9c6-9347d0895efb.png)
+![media_images_f1_p_r_heatmap_winter-totem-6_423_c6e8de7712ab2e94fcac](https://user-images.githubusercontent.com/93069949/145939274-8b1370d0-bded-4d09-b9d8-db7bdd458954.png)
+
+
+I am currently investigating whether it is possible to significantly improve the performance of the model. Dropout and Augmentations seem to have an adverse effect on the accuracy so I might need to proceed with a different architecture altogether. 
 
 ---
 
