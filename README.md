@@ -10,7 +10,7 @@ Negative             |  Typical
 ![1e6f48393e17_03](https://user-images.githubusercontent.com/93069949/144041416-d3e5d620-a5b4-45ae-ac8f-331358622b00.png) | ![09cf9767a7bf](https://user-images.githubusercontent.com/93069949/144042579-0e26ae6c-d7c0-439a-b59a-497faf80bdd9.jpg)
 
 ## Installation
-1. 2. Create conda environment
+1. Create conda environment
 ```
 conda create --name env-name python=3.6.13 gitpython
 ```
@@ -29,7 +29,7 @@ Repo.clone_from("https://github.com/ihamdi/Covid-xRay-Classification.git","/your
 conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 ```
 
-4. Install dependencies from [`requirements.txt`](https://github.com/ihamdi/Dogs-vs-Cats-Classification/blob/main/requirements.txt) file:
+4. Install dependencies from [`requirements.txt`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/requirements.txt) file:
 ```
 pip install -r requirements.txt
 ```
