@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 5. Download Data
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run [`download_data.py`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/scripts/download_data.py) to download the data using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Run [`python /scripts/download_data.py`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/scripts/download_data.py) to download the data using the Kaggle API and extract it automatically. If you haven't used Kaggle API before, please take a look at the instructions at the bottom on how to get your API key.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise, extract the contents of the "train" directory from the official [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection/data) page to the [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder inside the [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/) directory.
 
