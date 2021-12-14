@@ -54,7 +54,7 @@ or
 ```
 python train.py experiment=template
 ```
-This will run an experiment based on the template using the following parameters:
+This will run an experiment based on the template using the following configuation:
 1. 20 epochs (unless early stopping is triggered)
 2. Torchxrayvision's "ALL" (pretrained Densenet121) model with no Dropout
 3. Adam optimizer with learning rate of 0.003 and AMSGrad enabled.
@@ -63,7 +63,7 @@ This will run an experiment based on the template using the following parameters
 6. 640 images only
 7. 60 : 20 : 20 split
 8. Image size of 128x128
-9. MIN/(MAX-MIN)x255 normalization
+9. IMG-MIN/(MAX-MIN)x255 normalization
 10. No augmentations
 
 *Torchxrayvision models expect 224 so the code defaults to that automatically if one of them is chosen.
