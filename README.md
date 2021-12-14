@@ -12,8 +12,8 @@ Negative             |  Typical
 ## Installation
 1. Clone Github
 ```
-import git
-git.Git("/your/directory/to/clone").clone("git:https://github.com/ihamdi/Covid-xRay-Classification.git)
+from git import Repo
+Repo.clone_from("https://github.com/ihamdi/Covid-xRay-Classification.git","/your/directory/")
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or [download](https://github.com/ihamdi/Covid-xRay-Classification/archive/refs/heads/main.zip) and extract a copy of the files.
