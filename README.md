@@ -66,6 +66,8 @@ This will run an experiment based on the template using the following parameters
 9. MIN/(MAX-MIN)x255 normalization
 10. No augmentations
 
+*Torchxrayvision models expect 224 so the code defaults to that automatically if one of them is chosen.
+
 ### Hyperparameter Search with Optuna:
 As part of the Hydra template, Optuna can be used to find the best hyperparameters within a defined range. A template configuration file can be found within [`hparams_search`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/hparams_search/) folder inside the [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs/) directory. The template hyperparameter search can be initiated using
 ```
@@ -78,8 +80,35 @@ python run.py -m hparams_search=template_optuna experiment=template hydra.sweepe
 ---
 
 ## Results
+When in binary classification mode, the code is able to produce a model with just over 80% accuracy on the validation data before it starts overfitting: 
+
+![Screenshot from 2021-12-14 09-14-42](https://user-images.githubusercontent.com/93069949/145937483-47c0715b-5056-4e5d-aed8-c45f1582cc4a.png)
+
+This was done using the "All" model from torchxrayvision, Adam optimizer, and the following hyperparameters:
+1. drop_rate (Dropout) = 0
+2. lr (Learning Rate) = 0.0003
+3. amsgrad (for Adam) = True
+4. normal (Normalization Method) = 0 (img-min/(max-min)*255) 
+5. rotation = 11.355
+6. scaling = 0.2789
+7. shear = 1
+8. translation = 0.07357
+9. horizontal_flip = True
+10. vertical_flip = True
+11. dataset_size (Sample Size) = 3350 (maximum possible to keep subset balanced)
+12. train_val_test_split = [70,20,10]
+13. batch_size = 156
+14. num_workers = 20
 
 
+XXXXXXXXXxx
+XXXXXXXXXXX
+XXXXXXXXXX
+
+![f1](https://user-images.githubusercontent.com/93069949/145938296-730f83a5-8c3b-427b-9038-acf0cf1016d4.png)
+![confusion matrix](https://user-images.githubusercontent.com/93069949/145938302-368baf76-d877-4c8a-98ce-ba3c30ffc5b7.png)
+
+---
 
 ### Background:
 
