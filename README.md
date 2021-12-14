@@ -152,4 +152,4 @@ For any questions or feedback, please feel free to post comments or contact me a
 
 ### Using Weights & Biases (wandb):
 
-![Screenshot from 2021-1](https://user-images.githubusercontent.com/93069949/145940749-1ee81bbf-a77a-40c6-985c-880ad3a5c6c5.png)
+![Screenshot from 2021-12-14 11-50-20](https://user-images.githubusercontent.com/93069949/145955435-3a354138-f962-4271-85c7-053d487920c7.png)
