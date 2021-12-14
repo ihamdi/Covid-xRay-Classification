@@ -16,10 +16,9 @@ conda create --name env-name python=3.6.13 gitpython
 ```
 &nbsp;&nbsp;&nbsp;&nbsp; _*Python 3.6.13 is needed since GDCM is not supported on versions above 3.6_
 
-2. Clone Github
+2. Clone Github (run from command line)
 ```
-from git import Repo
-Repo.clone_from("https://github.com/ihamdi/Covid-xRay-Classification.git","/your/directory/")
+git clone -v https://github.com/ihamdi/Covid-xRay-Classification.git /your/directory/
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or [download](https://github.com/ihamdi/Covid-xRay-Classification/archive/refs/heads/main.zip) and extract a copy of the files.
