@@ -1,5 +1,5 @@
 # Covid xRay Binary Classification 
-### Using Pytorch Lightning, Densenet121 & SIIM-FISABIO-RSNA COVID-19 Detection Database
+### Using Pytorch Lightning and Torchxrayvision's Pretrained Densenet121 Models
 <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-v3.6.13-blue.svg?logo=python&style=for-the-badge" /></a>
 <a href="https://www.anaconda.org/"><img src="https://img.shields.io/badge/conda-v4.10.3-blue.svg?logo=conda&style=for-the-badge" /></a>
 <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-v1.10.0-red.svg?logo=PyTorch&style=for-the-badge" /></a>
