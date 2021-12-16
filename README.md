@@ -39,6 +39,13 @@ pip install -r requirements.txt
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Otherwise, extract the contents of the "train" directory from the official [SIIM-FISABIO-RSNA COVID-19 Detection](https://www.kaggle.com/c/siim-covid19-detection/data) page to the [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder inside the [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/) directory.
 
+## Folder Structure
+1. [`bash`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/bash) directory contains [`schedule.sh`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/bash/schedule.sh) bash file used to run multiple experiments in sequence.
+2. [`configs`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/configs) directory contains configuration files used for different experiments, callbacks, datamodules, sweeps, etc.
+3. [`data`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data) directory contains [`train`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/data/train) folder as well as [`train_study_level.csv`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/data/train_study_level.csv) spreadsheet for the data.
+4. [`scripts`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/scripts) directory contains [`download_data.py`](https://github.com/ihamdi/Covid-xRay-Classification/blob/main/scripts/download_data.py) used to download the dataset directly from Kaggle.
+5. [`src`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/src) directory contains folders where [`callbacks`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/src/callbacks), [`datamodules`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/src/datamodules), [`models`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/src/models), and [`utility`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/src/utils) functions, as well as [`training`](https://github.com/ihamdi/Covid-xRay-Classification/tree/main/src/train.py), are defined. 
+
 ## How to use:
 Using Pytorch Lightning with the Hydra-Lightning-Template enables us to have experiments with different configurations/hyperparameters on the same dataset or doing a sweep with Optuna:
 
