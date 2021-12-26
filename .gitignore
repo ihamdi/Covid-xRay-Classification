@@ -3,3 +3,11 @@ __pycache__/
 checkpoints/
 wandb/
 tests/
+logs/
+src/__pycache__/
+src/callbacks/__pycache__/
+src/datamodules/__pycache__/
+src/datamodules/datasets/__pycache__/
+src/models/__pycache__/
+src/models/modules/__pycache__/
+src/utils/__pycache__/
