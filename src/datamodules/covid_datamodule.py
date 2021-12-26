@@ -148,12 +148,12 @@ class COVIDDataModule(LightningDataModule):
         train_df, test_df = train_test_split(df, 
                                             test_size=self.train_val_test_split[2], 
                                             random_state=42,
-                                            stratify=df.Negative.values
+                                            stratify=df.label.values
                                             )
         train_df, valid_df = train_test_split(train_df,
                                             test_size=self.train_val_test_split[1]/self.train_val_test_split[0], 
                                             random_state=42,
-                                            stratify=train_df.Negative.values
+                                            stratify=train_df.label.values
                                             )
         return train_df, valid_df, test_df
 
