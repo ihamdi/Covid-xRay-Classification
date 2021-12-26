@@ -213,6 +213,7 @@ class LogF1PrecRecHeatmap(Callback):
             preds = torch.cat(self.preds).cpu().numpy()
             targets = torch.cat(self.targets).cpu().numpy()
             f1 = f1_score(targets, preds, average=None)
+            f1_macro = f1_score(targets,preds,average="macro")
             r = recall_score(targets, preds, average=None)
             p = precision_score(targets, preds, average=None)
             data = [f1, p, r]
@@ -234,6 +235,7 @@ class LogF1PrecRecHeatmap(Callback):
 
             # names should be uniqe or else charts from different experiments in wandb will overlap
             experiment.log({f"f1_p_r_heatmap/{experiment.name}": wandb.Image(plt)}, commit=False)
+            experiment.log({f"f1_macro": f1_macro}, commit=False)
 
             # reset plot
             plt.clf()
