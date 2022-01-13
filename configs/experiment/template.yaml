@@ -49,7 +49,7 @@ model:
   betas: [0.9, 0.999] #Adam
   centered: False           #RMSprop
   nesterov: False                       #SGD
-  amsgrad: True      #Adam
+  amsgrad: False      #Adam
 
 datamodule:
   _target_: src.datamodules.covid_datamodule.COVIDDataModule
